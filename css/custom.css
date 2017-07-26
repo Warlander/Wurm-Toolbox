@@ -1,0 +1,18 @@
+body {
+   background-image: url(http://www.wurmonline.com/images/background.jpg);
+   background-repeat: no-repeat;
+   background-color: #010506;
+   background-attachment: fixed;
+   background-position: top;
+}
+
+.main-container {
+    margin: auto;
+    max-width: 800px;
+    background-color: rgba(150, 150, 150, 0.5);
+}
+
+.center {
+    margin: auto;
+    text-align: center
+}
