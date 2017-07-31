@@ -24,9 +24,9 @@
                     <a class="navbar-brand" href="#">Wurm Toolbox</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="#deedcalc">Deed calculator</a></li>
-                    <li><a href="#favorcalc">Favor calculator</a></li>
-                    <li><a href="#armorcalc">Armor defence</a></li>
+                    <li><a href="#deed-calc">Deed calculator</a></li>
+                    <li><a href="#favor-calc">Favor calculator</a></li>
+                    <li><a href="#armor-calc">Armor defence</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">More tools <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -35,9 +35,43 @@
                             <li><a href="https://www.niarja.com">Niarja</a></li>
                         </ul>
                     </li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
-            <h2>Test</h2>
+            
+            <div class="tab-holder">
+                <div class="tab-container" id="deed-calc-tab">
+                    <label>Server</label>
+                    <div>
+                        <label class="radio-inline">
+                        <input type="radio" name="serverRadioGroup" id="serverRadioFreedom" value="Freedom" checked> Freedom
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="serverRadioGroup" id="serverRadioEpic" value="Epic"> Epic
+                        </label>
+                        
+                        <input type="number" class="form-control" id="westInput" min="5" max="100" value="5">
+                    </div>
+                </div>
+                
+                
+                
+                <div class="tab-container" id="favor-calc-tab">
+                    <p>Favor calc</p>
+                </div>
+                
+                
+                
+                <div class="tab-container" id="armor-calc-tab">
+                    <p>Armor calc</p>
+                </div>
+                
+                
+                
+                <div class="tab-container" id="about-tab">
+                    <p>About</p>
+                </div>
+            </div>
         </div>
     </body>
 </html>

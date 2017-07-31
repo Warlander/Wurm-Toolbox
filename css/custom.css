@@ -9,10 +9,19 @@ body {
 .main-container {
     margin: auto;
     max-width: 800px;
-    background-color: rgba(150, 150, 150, 0.5);
+    background-color: rgba(200, 200, 200, 0.8);
 }
 
 .center {
     margin: auto;
     text-align: center
+}
+
+.tab-holder {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.tab-container {
+    
 }

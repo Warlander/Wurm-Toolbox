@@ -1,11 +1,20 @@
 // <editor-fold desc="Setup and general functions">
 
 $(document).ready(function() {
-    window.onhashchange = onHashChange;
+    window.onhashchange = toggleTab;
+    toggleTab();
 });
 
-function onHashChange() {
-    console.log("Current hash: " + location.hash);
+function toggleTab() {
+    var currentHash = location.hash;
+    var idName = currentHash.replace("#", "");
+    $(".tab-container").css("display", "none");
+    if ($(".tab-container[id*='" + idName +"']").length !== 0) {
+        $(".tab-container[id*='" + idName +"']").css("display", "block");
+    }
+    else {
+        $("#about-tab").css("display", "block");
+    }
 }
 
 // </editor-fold>
