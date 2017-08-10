@@ -21,6 +21,13 @@ function toggleTab() {
 
 // <editor-fold desc="Deed Calculator">
 
+$(document).ready(function() {
+    $("#deed-calc-tab input").on("input", updateDeedInfo);
+});
 
+function updateDeedInfo(event) {
+    var source = event.target || event.srcElement;
+    console.log(source);
+}
 
 // </editor-fold>

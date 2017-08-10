@@ -11,9 +11,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/site-javascript.js"></script>
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1796285517489031",
+            enable_page_level_ads: true
+          });
+        </script>
     </head>
     <body>
-        <div class="xidden-xs center">
+        <div class="hidden-xs center">
             <img src="http://www.wurmonline.com/images/wurmLogoLarge.png" alt="Wurm logo"/>
             <div class="form-group">&nbsp;</div>
         </div>
@@ -42,15 +50,47 @@
             <div class="tab-holder">
                 <div class="tab-container" id="deed-calc-tab">
                     <label>Server</label>
-                    <div>
+                    <div class="form-group">
                         <label class="radio-inline">
                         <input type="radio" name="serverRadioGroup" id="serverRadioFreedom" value="Freedom" checked> Freedom
                         </label>
                         <label class="radio-inline">
                             <input type="radio" name="serverRadioGroup" id="serverRadioEpic" value="Epic"> Epic
                         </label>
-                        
-                        <input type="number" class="form-control" id="westInput" min="5" max="100" value="5">
+                    </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <label for="westInput">West</label>
+                      <input type="number" class="form-control" id="westInput" min="5" max="1000" value="5">
+                    </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <label for="eastInput">East</label>
+                      <input type="number" class="form-control" id="eastInput" min="5" max="1000" value="5">
+                    </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <label for="northInput">North</label>
+                      <input type="number" class="form-control" id="northInput" min="5" max="1000" value="5">
+                    </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <label for="southInput">South</label>
+                      <input type="number" class="form-control" id="southInput" min="5" max="1000" value="5">
+                    </div>
+                    <div class="form-group col-xs-12">
+                      <label for="perimeterInput">Perimeter (including 5 free tiles)</label>
+                      <input type="number" class="form-control" id="perimeterInput" min="5" max="1000" value="5">
+                    </div>
+                    <div class="form-group col-xs-12">
+                      <label for="guardsInput">Guards</label>
+                      <input type="number" class="form-control" id="guardsInput" min="0" max="1000" value="0">
+                    </div>
+                    <div class="form-group col-xs-12">
+                      <input class="btn btn-default btn-block" type="button" value="Remember current settings">
+                    </div>
+                    <div class="col-xs-12 alert alert-danger" role="alert">
+                        Something went wrong
+                    </div>
+                    <div class="col-xs-12 alert alert-info" role="alert">
+                        This is the result.<br/>
+                        It is multiline.
                     </div>
                 </div>
                 
@@ -72,6 +112,14 @@
                     <p>About</p>
                 </div>
             </div>
+            
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="center">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="692D7BCDA2X8U">
+                <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal â€“ The safer, easier way to pay online.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1" hidden="" style="display: none !important;">
+            </form>
         </div>
+        <div class="hidden-xs small-filler"></div>
     </body>
 </html>
