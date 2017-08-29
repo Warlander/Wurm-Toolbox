@@ -184,6 +184,9 @@ var DeedCalculator;
             
             var creationCostDiff = totalCreationCost - savedCreationCost;
             var upkeepCostDiff = totalUpkeepCost - savedUpkeepCost;
+            if (creationCostDiff < 0) {
+                errors.push("There are <b>no refunds</b> for downsizing the deed");
+            }
             
             infoString += "Difference in creation cost: " + currencyToString(creationCostDiff) + "<br/>";
             infoString += "Difference in upkeep cost: " + currencyToString(upkeepCostDiff);
@@ -205,7 +208,7 @@ var DeedCalculator;
         }
     };
     
-}( window.DeedCalculator = window.DeedCalculator || {}, jQuery ));
+}(window.DeedCalculator = window.DeedCalculator || {}, jQuery));
 
 $(document).ready(function() {
     DeedCalculator.updateDeedInfo(null);
