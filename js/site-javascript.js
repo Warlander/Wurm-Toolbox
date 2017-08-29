@@ -195,7 +195,7 @@ var DeedCalculator;
         $("#deedCalcInfo").html(infoString);
         
         if (errors.length === 0) {
-            $("#deedCalcErrors").fadeOut();
+            $("#deedCalcErrors").slideUp();
         }
         else {
             var errorsString = "";
@@ -204,7 +204,7 @@ var DeedCalculator;
             }
             errorsString += errors[errors.length - 1];
             $("#deedCalcErrors").html(errorsString);
-            $("#deedCalcErrors").fadeIn();
+            $("#deedCalcErrors").slideDown();
         }
     };
     
