@@ -6,12 +6,12 @@ $(document).ready(function() {
 function toggleTab() {
     var currentHash = location.hash;
     var idName = currentHash.replace("#", "");
-    $(".tab-container").css("display", "none");
+    $(".tab-container").slideUp();
     if ($(".tab-container[id*='" + idName +"']").length !== 0) {
-        $(".tab-container[id*='" + idName +"']").css("display", "block");
+        $(".tab-container[id*='" + idName +"']").slideDown();
     }
     else {
-        $("#about-tab").css("display", "block");
+        $("#about-tab").slideDown();
     }
 };
 
