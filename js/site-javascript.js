@@ -1,3 +1,5 @@
+var currentTab;
+
 $(document).ready(function() {
     window.onhashchange = toggleTab;
     toggleTab();
@@ -6,13 +8,26 @@ $(document).ready(function() {
 function toggleTab() {
     var currentHash = location.hash;
     var idName = currentHash.replace("#", "");
-    $(".tab-container").slideUp();
-    if ($(".tab-container[id*='" + idName +"']").length !== 0) {
-        $(".tab-container[id*='" + idName +"']").slideDown();
+    if (!currentTab) {
+        $(".tab-container").hide();
+        if ($(".tab-container[id*='" + idName +"']").length !== 0) {
+            $(".tab-container[id*='" + idName +"']").show();
+        }
+        else {
+            $("#about-tab").show();
+        }
     }
     else {
-        $("#about-tab").slideDown();
+        $(".tab-container").slideUp();
+        if ($(".tab-container[id*='" + idName +"']").length !== 0) {
+            $(".tab-container[id*='" + idName +"']").slideDown();
+        }
+        else {
+            $("#about-tab").slideDown();
+        }
     }
+    
+    currentTab = idName;
 };
 
 var DeedCalculator;
