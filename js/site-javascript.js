@@ -101,18 +101,18 @@ var DeedCalculator;
         const MAX_EPIC_GUARDS = 20;
         
         var source = event !== null ? (event.target || event.srcElement) : null;
-        var saveInfo = source && source.id === "saveDeedButton";
+        var saveInfo = source && source.id === "deedCalcSaveDeedButton";
         
         var errors = [];
         
-        var server = $("input:radio[name='serverRadioGroup']:checked").val();
+        var server = $("input:radio[name='deedCalcServerRadioGroup']:checked").val();
         var isEpic = server === EPIC_SERVER;
-        var west = Number($("#westInput").val());
-        var east = Number($("#eastInput").val());
-        var north = Number($("#northInput").val());
-        var south = Number($("#southInput").val());
-        var perimeter = Number($("#perimeterInput").val());
-        var guards = Number($("#guardsInput").val());
+        var west = Number($("#deedCalcWestInput").val());
+        var east = Number($("#deedCalcEastInput").val());
+        var north = Number($("#deedCalcNorthInput").val());
+        var south = Number($("#deedCalcSouthInput").val());
+        var perimeter = Number($("#deedCalcPerimeterInput").val());
+        var guards = Number($("#deedCalcGuardsInput").val());
         
         var deedWidth = west + east + 1;
         var deedHeight = north + south + 1;
@@ -164,7 +164,7 @@ var DeedCalculator;
             guardsUpkeepCost = guards * GUARD_EPIC_UPKEEP_COST;
         }
         else {
-            guardsUpkeepCost = guards * GUARD_EPIC_CREATION_COST;
+            guardsUpkeepCost = guards * GUARD_FREEDOM_UPKEEP_COST;
         }
         
         var totalCreationCost = deedAreaCreationCost + perimeterAreaCreationCost + guardsCreationCost;
@@ -230,5 +230,6 @@ $(document).ready(function() {
     DeedCalculator.updateDeedInfo(null);
     $("#deed-calc-tab input[type!='button']").on("input", DeedCalculator.updateDeedInfo);
     $("#deed-calc-tab input[type='button']").on("click", DeedCalculator.updateDeedInfo);
+    $("#deed-calc-tab input[type='radio']").on("click", DeedCalculator.updateDeedInfo);
 });
 
