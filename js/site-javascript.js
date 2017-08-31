@@ -192,7 +192,7 @@ var DeedCalculator;
         infoString += "Max guards: " + maxGuards + "<br/>";
         
         if (haveSavedValues) {
-            infoString += "<br/>"
+            infoString += "<br/>";
             infoString += "Saved deed size: " + savedDeedWidth + "X" + savedDeedHeight + "  (" + savedDeedArea + " tiles)<br/>";
             infoString += "Including perimeter: " + savedPerimeterWidth + "X" + savedPerimeterHeight + " (" + savedTotalArea + " tiles)<br/>";
             infoString += "Saved creation cost: " + currencyToString(savedCreationCost) + "<br/>";

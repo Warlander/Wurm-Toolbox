@@ -98,7 +98,20 @@
                 
                 
                 <div class="tab-container" id="favor-calc-tab">
-                    <p>Favor calc</p>
+                    <div class="form-group col-xs-6">
+                      <label for="favorCalcCurrentInput">Current favor</label>
+                      <input type="number" class="form-control" id="favorCalcCurrentInput" min="0" max="100" value="0">
+                    </div>
+                    <div class="form-group col-xs-6">
+                      <label for="favorCalcTargetInput">Target favor</label>
+                      <input type="number" class="form-control" id="favorCalcTargetInput" min="0" max="100" value="100">
+                    </div>
+                    <div class="form-group col-xs-12 checkbox">
+                        <label><input type="checkbox" id="favorCalcActionsPenaltyCheckbox">Actions penalty</label>
+                    </div>
+                    <div class="col-xs-12 alert alert-info" id="favorCalcInfo" role="alert">
+                        This is the result.
+                    </div>
                 </div>
                 
                 
