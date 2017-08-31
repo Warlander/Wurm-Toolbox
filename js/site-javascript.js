@@ -15,6 +15,7 @@ function toggleTab() {
         }
         else {
             $("#about-tab").show();
+            idName = "about-tab";
         }
     }
     else {
