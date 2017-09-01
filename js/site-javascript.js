@@ -277,7 +277,7 @@ var FavorCalculator;
         requiredSeconds = Math.floor(requiredSeconds / 10) * 10;
         var timeString = timeToString(requiredSeconds);
         
-        $("#favorCalcInfo").removeClass("alert-error");
+        $("#favorCalcInfo").removeClass("alert-danger");
         $("#favorCalcInfo").addClass("alert-info");
         $("#favorCalcInfo").html("Time needed: " + timeString);
     };
