@@ -264,7 +264,7 @@ var FavorCalculator;
         
         if (currentFavor > targetFavor) {
             $("#favorCalcInfo").removeClass("alert-info");
-            $("#favorCalcInfo").addClass("alert-error");
+            $("#favorCalcInfo").addClass("alert-danger");
             $("#favorCalcInfo").html("Target favor must be higher than current favor");
             return;
         }
