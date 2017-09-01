@@ -233,3 +233,59 @@ $(document).ready(function() {
     $("#deed-calc-tab input[type='radio']").on("click", DeedCalculator.updateDeedInfo);
 });
 
+var FavorCalculator;
+(function(FavorCalculator, $, undefined) {
+    
+    function timeToString(inputSeconds) {
+        var seconds = inputSeconds % 60;
+        inputSeconds = Math.floor(inputSeconds / 60);
+        var minutes = inputSeconds % 60;
+        var hours = Math.floor(inputSeconds / 60);
+        
+        var timeString = seconds + " seconds";
+        if (minutes > 0 || hours > 0) {
+            timeString = minutes + " minutes, " + timeString;
+        }
+        if (hours > 0) {
+            timeString = hours + " hours, " + timeString;
+        }
+        
+        return timeString;
+    }
+    
+    function calculateSecondsToFavor(favor) {
+        return (favor * favor) * 1.5;
+    }
+    
+    FavorCalculator.refreshResult = function(event) {
+        var currentFavor = Number($("#favorCalcCurrentInput").val());
+        var targetFavor = Number($("#favorCalcTargetInput").val());
+        var actionsPenalty = $("#favorCalcActionsPenaltyCheckbox").is(":checked");
+        
+        if (currentFavor > targetFavor) {
+            $("#favorCalcInfo").removeClass("alert-info");
+            $("#favorCalcInfo").addClass("alert-error");
+            $("#favorCalcInfo").html("Target favor must be higher than current favor");
+            return;
+        }
+        
+        var requiredSeconds = calculateSecondsToFavor(targetFavor) - calculateSecondsToFavor(currentFavor);
+        if (actionsPenalty) {
+            requiredSeconds *= 2;
+        }
+        
+        requiredSeconds = Math.floor(requiredSeconds / 10) * 10;
+        var timeString = timeToString(requiredSeconds);
+        
+        $("#favorCalcInfo").removeClass("alert-error");
+        $("#favorCalcInfo").addClass("alert-info");
+        $("#favorCalcInfo").html("Time needed: " + timeString);
+    };
+    
+}(window.FavorCalculator = window.FavorCalculator || {}, jQuery));
+
+$(document).ready(function() {
+    FavorCalculator.refreshResult(null);
+    $("#favor-calc-tab").on("input", FavorCalculator.refreshResult);
+    $("#favor-calc-tab input[type='checkbox']").on("click", FavorCalculator.refreshResult);
+});
