@@ -289,3 +289,8 @@ $(document).ready(function() {
     $("#favor-calc-tab").on("input", FavorCalculator.refreshResult);
     $("#favor-calc-tab input[type='checkbox']").on("click", FavorCalculator.refreshResult);
 });
+
+var ArmorCalculator;
+(function(ArmorCalculator, $, undefined) {
+    
+}(window.ArmorCalculator = window.ArmorCalculator || {}, jQuery));
