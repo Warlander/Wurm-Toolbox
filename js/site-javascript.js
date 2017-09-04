@@ -293,4 +293,55 @@ $(document).ready(function() {
 var ArmorCalculator;
 (function(ArmorCalculator, $, undefined) {
     
+    ArmorCalculator.rarityTypes = {
+        "Normal": 1,
+        "Rare": 1.03,
+        "Supreme": 1.06,
+        "Fantastic": 1.09
+    };
+    
+    ArmorCalculator.modifierTypes = ["bite", "crush", "pierce", "slash", "burn", "cold", "acid", "infection", "internal", "poison"];
+    
+    ArmorCalculator.armorTypes = {
+        "Cloth": {
+            "baseReduction": 0.4,
+            "reductionModifier": {
+                "bite": 0.9,
+                "crush": 1.15,
+                "pierce": 1,
+                "slash": 0.8,
+                "burn": 0.9,
+                "cold": 1.25,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.3,
+                "crush": 0.5,
+                "pierce": 0.35,
+                "slash": 0.25,
+                "burn": 0.1,
+                "cold": 0.6,
+                "acid": 0.6,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        }
+    };
+    
 }(window.ArmorCalculator = window.ArmorCalculator || {}, jQuery));
+
+$(document).ready(function() {
+    var raritySelects = $(".armorCalcRaritySelect");
+    $.each(ArmorCalculator.rarityTypes, function(key, value) {
+        raritySelects.append($("<option/>").val(value).text(key));
+    });
+    
+    var armorSelects = $(".armorCalcArmorSelect");
+    $.each(ArmorCalculator.armorTypes, function(key, value) {
+        armorSelects.append($("<option/>").val(key).text(key));
+    });
+});
