@@ -304,7 +304,7 @@ var ArmorCalculator;
     
     ArmorCalculator.armorTypes = {
         "Cloth": {
-            "baseReduction": 0.4,
+            "baseReduction": 0.35,
             "reductionModifier": {
                 "bite": 0.9,
                 "crush": 1.15,
@@ -321,10 +321,361 @@ var ArmorCalculator;
                 "bite": 0.3,
                 "crush": 0.5,
                 "pierce": 0.35,
-                "slash": 0.25,
+                "slash": 0.35,
                 "burn": 0.1,
                 "cold": 0.6,
                 "acid": 0.6,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Leather": {
+            "baseReduction": 0.45,
+            "reductionModifier": {
+                "bite": 0.95,
+                "crush": 1,
+                "pierce": 0.9,
+                "slash": 1.1,
+                "burn": 1.15,
+                "cold": 1,
+                "acid": 0.9,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.3,
+                "crush": 0.5,
+                "pierce": 0.3,
+                "slash": 0.3,
+                "burn": 0.1,
+                "cold": 0.6,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Studded leather": {
+            "baseReduction": 0.5,
+            "reductionModifier": {
+                "bite": 1.05,
+                "crush": 1,
+                "pierce": 1.1,
+                "slash": 0.9,
+                "burn": 1,
+                "cold": 0.9,
+                "acid": 1.05,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.45,
+                "crush": 0.6,
+                "pierce": 0.25,
+                "slash": 0.25,
+                "burn": 0.1,
+                "cold": 0.6,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Chain": {
+            "baseReduction": 0.55,
+            "reductionModifier": {
+                "bite": 1.05,
+                "crush": 1.1,
+                "pierce": 0.9,
+                "slash": 1,
+                "burn": 1.05,
+                "cold": 0.9,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.6,
+                "crush": 0.25,
+                "pierce": 0.25,
+                "slash": 0.6,
+                "burn": 0.6,
+                "cold": 0.1,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Steel chain": {
+            "baseReduction": 0.57,
+            "reductionModifier": {
+                "bite": 1.05,
+                "crush": 1.1,
+                "pierce": 0.9,
+                "slash": 1,
+                "burn": 1.05,
+                "cold": 0.9,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.6,
+                "crush": 0.25,
+                "pierce": 0.25,
+                "slash": 0.6,
+                "burn": 0.6,
+                "cold": 0.1,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Adamantine chain": {
+            "baseReduction": 0.6,
+            "reductionModifier": {
+                "bite": 1.05,
+                "crush": 1.1,
+                "pierce": 0.9,
+                "slash": 1,
+                "burn": 1.05,
+                "cold": 0.9,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.6,
+                "crush": 0.25,
+                "pierce": 0.25,
+                "slash": 0.6,
+                "burn": 0.6,
+                "cold": 0.1,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Glimmersteel chain": {
+            "baseReduction": 0.65,
+            "reductionModifier": {
+                "bite": 1.05,
+                "crush": 1.1,
+                "pierce": 0.9,
+                "slash": 1,
+                "burn": 1.05,
+                "cold": 0.9,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.6,
+                "crush": 0.25,
+                "pierce": 0.25,
+                "slash": 0.6,
+                "burn": 0.6,
+                "cold": 0.1,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Seryll chain": {
+            "baseReduction": 0.65,
+            "reductionModifier": {
+                "bite": 1.05,
+                "crush": 1.1,
+                "pierce": 0.9,
+                "slash": 1,
+                "burn": 1.05,
+                "cold": 0.9,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.6,
+                "crush": 0.25,
+                "pierce": 0.25,
+                "slash": 0.6,
+                "burn": 0.6,
+                "cold": 0.1,
+                "acid": 0.2,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Plate": {
+            "baseReduction": 0.65,
+            "reductionModifier": {
+                "bite": 1.075,
+                "crush": 0.85,
+                "pierce": 1,
+                "slash": 1.05,
+                "burn": 0.95,
+                "cold": 1,
+                "acid": 1.075,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.45,
+                "crush": 0.25,
+                "pierce": 0.6,
+                "slash": 0.25,
+                "burn": 0.3,
+                "cold": 0.3,
+                "acid": 0.3,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Adamantine plate": {
+            "baseReduction": 0.7,
+            "reductionModifier": {
+                "bite": 1.075,
+                "crush": 0.85,
+                "pierce": 1,
+                "slash": 1.05,
+                "burn": 0.95,
+                "cold": 1,
+                "acid": 1.075,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.45,
+                "crush": 0.25,
+                "pierce": 0.6,
+                "slash": 0.25,
+                "burn": 0.3,
+                "cold": 0.3,
+                "acid": 0.3,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Glimmersteel plate": {
+            "baseReduction": 0.75,
+            "reductionModifier": {
+                "bite": 1.075,
+                "crush": 0.85,
+                "pierce": 1,
+                "slash": 1.05,
+                "burn": 0.95,
+                "cold": 1,
+                "acid": 1.075,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.45,
+                "crush": 0.25,
+                "pierce": 0.6,
+                "slash": 0.25,
+                "burn": 0.3,
+                "cold": 0.3,
+                "acid": 0.3,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Seryll plate": {
+            "baseReduction": 0.75,
+            "reductionModifier": {
+                "bite": 1.075,
+                "crush": 0.85,
+                "pierce": 1,
+                "slash": 1.05,
+                "burn": 0.95,
+                "cold": 1,
+                "acid": 1.075,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.45,
+                "crush": 0.25,
+                "pierce": 0.6,
+                "slash": 0.25,
+                "burn": 0.3,
+                "cold": 0.3,
+                "acid": 0.3,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Dragon leather": {
+            "baseReduction": 0.65,
+            "reductionModifier": {
+                "bite": 1,
+                "crush": 1.1,
+                "pierce": 1,
+                "slash": 0.9,
+                "burn": 1,
+                "cold": 1.05,
+                "acid": 0.95,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.5,
+                "crush": 0.5,
+                "pierce": 0.2,
+                "slash": 0.5,
+                "burn": 0.3,
+                "cold": 0.5,
+                "acid": 0.3,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Dragon scale": {
+            "baseReduction": 0.7,
+            "reductionModifier": {
+                "bite": 1,
+                "crush": 0.95,
+                "pierce": 1.1,
+                "slash": 1,
+                "burn": 1.1,
+                "cold": 0.95,
+                "acid": 1,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "bite": 0.4,
+                "crush": 0.5,
+                "pierce": 0.6,
+                "slash": 0.2,
+                "burn": 0.5,
+                "cold": 0.2,
+                "acid": 0.2,
                 "infection": 0,
                 "internal": 0,
                 "poison": 0
