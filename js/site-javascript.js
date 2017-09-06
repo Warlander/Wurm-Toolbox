@@ -77,7 +77,7 @@ var DeedCalculator;
         return toReturn.trim();
     }
     
-    DeedCalculator.updateDeedInfo = function(event) {
+    DeedCalculator.update = function(event) {
         const FREEDOM_SERVER = "Freedom";
         const EPIC_SERVER = "Epic";
         
@@ -227,10 +227,10 @@ var DeedCalculator;
 }(window.DeedCalculator = window.DeedCalculator || {}, jQuery));
 
 $(document).ready(function() {
-    DeedCalculator.updateDeedInfo(null);
-    $("#deed-calc-tab input[type!='button']").on("input", DeedCalculator.updateDeedInfo);
-    $("#deed-calc-tab input[type='button']").on("click", DeedCalculator.updateDeedInfo);
-    $("#deed-calc-tab input[type='radio']").on("click", DeedCalculator.updateDeedInfo);
+    DeedCalculator.update(null);
+    $("#deed-calc-tab input[type!='button']").on("input", DeedCalculator.update);
+    $("#deed-calc-tab input[type='button']").on("click", DeedCalculator.update);
+    $("#deed-calc-tab input[type='radio']").on("click", DeedCalculator.update);
 });
 
 var FavorCalculator;
@@ -257,7 +257,7 @@ var FavorCalculator;
         return (favor * favor) * 1.5;
     }
     
-    FavorCalculator.refreshResult = function(event) {
+    FavorCalculator.update = function(event) {
         var currentFavor = Number($("#favorCalcCurrentInput").val());
         var targetFavor = Number($("#favorCalcTargetInput").val());
         var actionsPenalty = $("#favorCalcActionsPenaltyCheckbox").is(":checked");
@@ -285,9 +285,9 @@ var FavorCalculator;
 }(window.FavorCalculator = window.FavorCalculator || {}, jQuery));
 
 $(document).ready(function() {
-    FavorCalculator.refreshResult(null);
-    $("#favor-calc-tab").on("input", FavorCalculator.refreshResult);
-    $("#favor-calc-tab input[type='checkbox']").on("click", FavorCalculator.refreshResult);
+    FavorCalculator.update(null);
+    $("#favor-calc-tab").on("input", FavorCalculator.update);
+    $("#favor-calc-tab input[type='checkbox']").on("click", FavorCalculator.update);
 });
 
 var ArmorCalculator;
@@ -300,12 +300,13 @@ var ArmorCalculator;
         "Fantastic": 1.09
     };
     
-    ArmorCalculator.modifierTypes = ["bite", "crush", "pierce", "slash", "burn", "cold", "acid", "infection", "internal", "poison"];
+    ArmorCalculator.modifierTypes = ["base", "bite", "crush", "pierce", "slash", "burn", "cold", "acid", "infection", "internal", "poison"];
     
     ArmorCalculator.armorTypes = {
         "Cloth": {
             "baseReduction": 0.35,
             "reductionModifier": {
+                "base": 1,
                 "bite": 0.9,
                 "crush": 1.15,
                 "pierce": 1,
@@ -318,6 +319,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.3,
                 "crush": 0.5,
                 "pierce": 0.35,
@@ -333,6 +335,7 @@ var ArmorCalculator;
         "Leather": {
             "baseReduction": 0.45,
             "reductionModifier": {
+                "base": 1,
                 "bite": 0.95,
                 "crush": 1,
                 "pierce": 0.9,
@@ -345,6 +348,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.3,
                 "crush": 0.5,
                 "pierce": 0.3,
@@ -360,6 +364,7 @@ var ArmorCalculator;
         "Studded leather": {
             "baseReduction": 0.5,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.05,
                 "crush": 1,
                 "pierce": 1.1,
@@ -372,6 +377,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.45,
                 "crush": 0.6,
                 "pierce": 0.25,
@@ -387,6 +393,7 @@ var ArmorCalculator;
         "Chain": {
             "baseReduction": 0.55,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.05,
                 "crush": 1.1,
                 "pierce": 0.9,
@@ -399,6 +406,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.6,
                 "crush": 0.25,
                 "pierce": 0.25,
@@ -414,6 +422,7 @@ var ArmorCalculator;
         "Steel chain": {
             "baseReduction": 0.57,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.05,
                 "crush": 1.1,
                 "pierce": 0.9,
@@ -426,6 +435,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.6,
                 "crush": 0.25,
                 "pierce": 0.25,
@@ -441,6 +451,7 @@ var ArmorCalculator;
         "Adamantine chain": {
             "baseReduction": 0.6,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.05,
                 "crush": 1.1,
                 "pierce": 0.9,
@@ -453,6 +464,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.6,
                 "crush": 0.25,
                 "pierce": 0.25,
@@ -468,6 +480,7 @@ var ArmorCalculator;
         "Glimmersteel chain": {
             "baseReduction": 0.65,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.05,
                 "crush": 1.1,
                 "pierce": 0.9,
@@ -480,6 +493,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.6,
                 "crush": 0.25,
                 "pierce": 0.25,
@@ -495,6 +509,7 @@ var ArmorCalculator;
         "Seryll chain": {
             "baseReduction": 0.65,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.05,
                 "crush": 1.1,
                 "pierce": 0.9,
@@ -507,6 +522,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.6,
                 "crush": 0.25,
                 "pierce": 0.25,
@@ -522,6 +538,7 @@ var ArmorCalculator;
         "Plate": {
             "baseReduction": 0.65,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.075,
                 "crush": 0.85,
                 "pierce": 1,
@@ -534,6 +551,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.45,
                 "crush": 0.25,
                 "pierce": 0.6,
@@ -549,6 +567,7 @@ var ArmorCalculator;
         "Adamantine plate": {
             "baseReduction": 0.7,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.075,
                 "crush": 0.85,
                 "pierce": 1,
@@ -561,6 +580,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.45,
                 "crush": 0.25,
                 "pierce": 0.6,
@@ -576,6 +596,7 @@ var ArmorCalculator;
         "Glimmersteel plate": {
             "baseReduction": 0.75,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.075,
                 "crush": 0.85,
                 "pierce": 1,
@@ -588,6 +609,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.45,
                 "crush": 0.25,
                 "pierce": 0.6,
@@ -603,6 +625,7 @@ var ArmorCalculator;
         "Seryll plate": {
             "baseReduction": 0.75,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1.075,
                 "crush": 0.85,
                 "pierce": 1,
@@ -615,6 +638,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.45,
                 "crush": 0.25,
                 "pierce": 0.6,
@@ -630,6 +654,7 @@ var ArmorCalculator;
         "Dragon leather": {
             "baseReduction": 0.65,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1,
                 "crush": 1.1,
                 "pierce": 1,
@@ -642,6 +667,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.5,
                 "crush": 0.5,
                 "pierce": 0.2,
@@ -657,6 +683,7 @@ var ArmorCalculator;
         "Dragon scale": {
             "baseReduction": 0.7,
             "reductionModifier": {
+                "base": 1,
                 "bite": 1,
                 "crush": 0.95,
                 "pierce": 1.1,
@@ -669,6 +696,7 @@ var ArmorCalculator;
                 "poison": 1
             },
             "blockChance": {
+                "base": 0,
                 "bite": 0.4,
                 "crush": 0.5,
                 "pierce": 0.6,
@@ -683,6 +711,31 @@ var ArmorCalculator;
         }
     };
     
+    function calculateQualityModifier(normalizedQuality) {
+        return Math.max(0.05, 1 - (1 - normalizedQuality) * (1 - normalizedQuality));
+    }
+    
+    ArmorCalculator.update = function() {
+        var includeBlockChance = $("#armorCalcBlockCheckbox").is(":checked");
+        
+        var armorTypeString = $("#armorCalcPrimarySelect").val();
+        var armorType = ArmorCalculator.armorTypes[armorTypeString];
+        var armorBaseReduction = armorType["baseReduction"];
+        var reductionModifiers = armorType["reductionModifier"];
+        var blockChances = armorType["blockChance"];
+        
+        var rarityModifier = Number($("#armorCalcPrimaryRarity").val());
+        var quality = Number($("#armorCalcPrimaryQuality").val());
+        var normalizedQuality = quality / 100;
+        
+        var tableRows = $("#armorCalcPrimaryTable > tbody > tr");
+        $.each(tableRows, function(key, value) {
+            var type = $(value).find("td")[0].innerHTML;
+            var reductionModifier = reductionModifiers[type];
+            var blockChance = blockChances[type];
+        });
+    };
+    
 }(window.ArmorCalculator = window.ArmorCalculator || {}, jQuery));
 
 $(document).ready(function() {
@@ -695,4 +748,6 @@ $(document).ready(function() {
     $.each(ArmorCalculator.armorTypes, function(key, value) {
         armorSelects.append($("<option/>").val(key).text(key));
     });
+    
+    ArmorCalculator.update();
 });
