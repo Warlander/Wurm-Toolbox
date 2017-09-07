@@ -305,6 +305,7 @@ var ArmorCalculator;
     ArmorCalculator.armorTypes = {
         "Cloth": {
             "baseReduction": 0.35,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 0.9,
@@ -334,6 +335,7 @@ var ArmorCalculator;
         },
         "Leather": {
             "baseReduction": 0.45,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 0.95,
@@ -363,6 +365,7 @@ var ArmorCalculator;
         },
         "Studded leather": {
             "baseReduction": 0.5,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.05,
@@ -392,6 +395,7 @@ var ArmorCalculator;
         },
         "Chain": {
             "baseReduction": 0.55,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.05,
@@ -421,6 +425,7 @@ var ArmorCalculator;
         },
         "Steel chain": {
             "baseReduction": 0.57,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.05,
@@ -449,7 +454,8 @@ var ArmorCalculator;
             }
         },
         "Adamantine chain": {
-            "baseReduction": 0.6,
+            "baseReduction": 0.55,
+            "materialReduction": 0.05,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.05,
@@ -478,7 +484,8 @@ var ArmorCalculator;
             }
         },
         "Glimmersteel chain": {
-            "baseReduction": 0.65,
+            "baseReduction": 0.55,
+            "materialReduction": 0.1,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.05,
@@ -507,7 +514,8 @@ var ArmorCalculator;
             }
         },
         "Seryll chain": {
-            "baseReduction": 0.65,
+            "baseReduction": 0.55,
+            "materialReduction": 0.1,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.05,
@@ -537,6 +545,7 @@ var ArmorCalculator;
         },
         "Plate": {
             "baseReduction": 0.65,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.075,
@@ -565,7 +574,8 @@ var ArmorCalculator;
             }
         },
         "Adamantine plate": {
-            "baseReduction": 0.7,
+            "baseReduction": 0.65,
+            "materialReduction": 0.05,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.075,
@@ -594,7 +604,8 @@ var ArmorCalculator;
             }
         },
         "Glimmersteel plate": {
-            "baseReduction": 0.75,
+            "baseReduction": 0.65,
+            "materialReduction": 0.1,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.075,
@@ -623,7 +634,8 @@ var ArmorCalculator;
             }
         },
         "Seryll plate": {
-            "baseReduction": 0.75,
+            "baseReduction": 0.65,
+            "materialReduction": 0.1,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1.075,
@@ -653,6 +665,7 @@ var ArmorCalculator;
         },
         "Dragon leather": {
             "baseReduction": 0.65,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1,
@@ -682,6 +695,7 @@ var ArmorCalculator;
         },
         "Dragon scale": {
             "baseReduction": 0.7,
+            "materialReduction": 0,
             "reductionModifier": {
                 "base": 1,
                 "bite": 1,
@@ -716,23 +730,49 @@ var ArmorCalculator;
     }
     
     ArmorCalculator.update = function() {
+        const baseReduction = 0.05;
+        const baseBlock = 0.05;
+        
         var includeBlockChance = $("#armorCalcBlockCheckbox").is(":checked");
         
-        var armorTypeString = $("#armorCalcPrimarySelect").val();
+        var armorTypeString = $("#armorCalcSelect").val();
         var armorType = ArmorCalculator.armorTypes[armorTypeString];
         var armorBaseReduction = armorType["baseReduction"];
+        var armorMaterialReduction = armorType["materialReduction"];
         var reductionModifiers = armorType["reductionModifier"];
         var blockChances = armorType["blockChance"];
         
-        var rarityModifier = Number($("#armorCalcPrimaryRarity").val());
-        var quality = Number($("#armorCalcPrimaryQuality").val());
+        var rarityModifier = Number($("#armorCalcRarity").val());
+        var quality = Number($("#armorCalcQuality").val());
         var normalizedQuality = quality / 100;
+        var qualityModifier = calculateQualityModifier(normalizedQuality);
         
-        var tableRows = $("#armorCalcPrimaryTable > tbody > tr");
+        var tableRows = $("#armorCalcTable > tbody > tr");
         $.each(tableRows, function(key, value) {
-            var type = $(value).find("td")[0].innerHTML;
+            var type = $(value).find("td")[0].innerHTML.toLowerCase();
             var reductionModifier = reductionModifiers[type];
             var blockChance = blockChances[type];
+            
+            var totalReduction = armorBaseReduction;
+            totalReduction *= reductionModifier;
+            totalReduction += armorMaterialReduction;
+            totalReduction *= rarityModifier;
+            totalReduction *= qualityModifier;
+            totalReduction += baseReduction;
+            var totalReductionPercent = (totalReduction * 100).toFixed(2) + "%";
+            
+            var totalBlock = blockChance;
+            totalBlock += (rarityModifier - 1);
+            totalBlock *= qualityModifier;
+            totalBlock += baseBlock;
+            var totalBlockPercent = (totalBlock * 100).toFixed(2) + "%";
+            
+            var totalAbsorb = 1 - ((1 - totalReduction) * (1 - totalBlock));
+            var totalAbsorbPercent = (totalAbsorb * 100).toFixed(2) + "%";
+            
+            $(value).find("td")[1].innerHTML = totalReductionPercent;
+            $(value).find("td")[2].innerHTML = totalBlockPercent;
+            $(value).find("td")[3].innerHTML = totalAbsorbPercent;
         });
     };
     
@@ -748,6 +788,8 @@ $(document).ready(function() {
     $.each(ArmorCalculator.armorTypes, function(key, value) {
         armorSelects.append($("<option/>").val(key).text(key));
     });
+    
+    $("#armor-calc-tab").on("input", ArmorCalculator.update);
     
     ArmorCalculator.update();
 });

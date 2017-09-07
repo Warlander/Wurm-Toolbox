@@ -117,120 +117,37 @@
                 
                 
                 <div class="tab-container" id="armor-calc-tab">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Settings
-                        </div>
-                        <div class="panel-body">
-                            <div class="checkbox">
-                                <label><input type="checkbox" id="armorCalcBlockCheckbox" checked> Include block chance in calculations (random chance to completely absorb damage)</label>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
-                        <div class="col-md-5 col-xs-12">
+                        <div class="col-xs-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Primary armor
+                                    Armor calculator
                                 </div>
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label for="armorCalcPrimarySelect">Armor type</label>
-                                        <select class="form-control armorCalcArmorSelect" id="armorCalcPrimarySelect"></select>
+                                        <label for="armorCalcSelect">Armor type</label>
+                                        <select class="form-control armorCalcArmorSelect" id="armorCalcSelect"></select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="armorCalcPrimaryRarity">Armor rarity</label>
-                                        <select class="form-control armorCalcRaritySelect" id="armorCalcPrimaryRarity"></select>
+                                        <label for="armorCalcRarity">Armor rarity</label>
+                                        <select class="form-control armorCalcRaritySelect" id="armorCalcRarity"></select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="armorCalcPrimaryQuality">Armor quality</label>
-                                        <input type="number" class="form-control" id="armorCalcPrimaryQuality" min="1" max="100" step="0.01" value="10">
+                                        <label for="armorCalcQuality">Armor quality</label>
+                                        <input type="number" class="form-control" id="armorCalcQuality" min="1" max="100" step="0.01" value="10">
                                     </div>
                                     <div class="form-group">
-                                        <table class="table table-bordered" id="armorCalcPrimaryTable">
+                                        <table class="table table-bordered" id="armorCalcTable">
                                             <thead>
                                                 <th>Damage type</th>
                                                 <th>Damage reduction</th>
+                                                <th>Block Chance</th>
+                                                <th>Total reduction</th>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Base</td>
                                                     <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bite</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Crush</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pierce</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Slash</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Burn</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Cold</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Acid</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Infection</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Internal</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Poison</td>
-                                                    <td>0%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-xs-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Compared armor
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <label for="armorCalcComparedSelect">Armor type</label>
-                                        <select class="form-control armorCalcArmorSelect" id="armorCalcComparedSelect"></select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="armorCalcComparedRarity">Armor rarity</label>
-                                        <select class="form-control armorCalcRaritySelect" id="armorCalcComparedRarity"></select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="armorCalcComparedQuality">Armor quality</label>
-                                        <input type="number" class="form-control " id="armorCalcComparedQuality" min="1" max="100" step="0.01" value="10">
-                                    </div>
-                                    <div class="form-group">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <th>Damage type</th>
-                                                <th>Damage reduction</th>
-                                                <th>% better</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Base</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
                                                 </tr>
@@ -238,9 +155,11 @@
                                                     <td>Bite</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
+                                                    <td>0%</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Crush</td>
+                                                    <td>0%</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
                                                 </tr>
@@ -248,9 +167,11 @@
                                                     <td>Pierce</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
+                                                    <td>0%</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Slash</td>
+                                                    <td>0%</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
                                                 </tr>
@@ -258,9 +179,11 @@
                                                     <td>Burn</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
+                                                    <td>0%</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Cold</td>
+                                                    <td>0%</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
                                                 </tr>
@@ -268,9 +191,11 @@
                                                     <td>Acid</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
+                                                    <td>0%</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Infection</td>
+                                                    <td>0%</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
                                                 </tr>
@@ -278,9 +203,11 @@
                                                     <td>Internal</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
+                                                    <td>0%</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Poison</td>
+                                                    <td>0%</td>
                                                     <td>0%</td>
                                                     <td>0%</td>
                                                 </tr>
