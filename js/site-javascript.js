@@ -8,6 +8,14 @@ $(document).ready(function() {
 function toggleTab() {
     var currentHash = location.hash;
     var idName = currentHash.replace("#", "");
+    if (idName === "") {
+        idName = "about-tab";
+    }
+    
+    if (currentTab === idName) {
+        return;
+    }
+    
     if (!currentTab) {
         $(".tab-container").hide();
         if ($(".tab-container[id*='" + idName +"']").length !== 0) {
