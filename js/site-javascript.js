@@ -551,7 +551,37 @@ var ArmorCalculator;
                 "poison": 0
             }
         },
-        "Plate": {
+        "Iron plate": {
+            "baseReduction": 0.63,
+            "materialReduction": 0,
+            "reductionModifier": {
+                "base": 1,
+                "bite": 1.075,
+                "crush": 0.85,
+                "pierce": 1,
+                "slash": 1.05,
+                "burn": 0.95,
+                "cold": 1,
+                "acid": 1.075,
+                "infection": 1,
+                "internal": 1,
+                "poison": 1
+            },
+            "blockChance": {
+                "base": 0,
+                "bite": 0.45,
+                "crush": 0.25,
+                "pierce": 0.6,
+                "slash": 0.25,
+                "burn": 0.3,
+                "cold": 0.3,
+                "acid": 0.3,
+                "infection": 0,
+                "internal": 0,
+                "poison": 0
+            }
+        },
+        "Steel plate": {
             "baseReduction": 0.65,
             "materialReduction": 0,
             "reductionModifier": {
