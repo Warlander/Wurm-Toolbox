@@ -89,20 +89,21 @@ var DeedCalculator;
         const FREEDOM_SERVER = "Freedom";
         const EPIC_SERVER = "Epic";
         
+        const IRON_COIN = 1;
         const COPPER_COIN = 100;
         const SILVER_COIN = 10000;
         const GOLD_COIN = 1000000;
         
         const FREE_PERIMETER_SIZE = 5;
         
-        const DEED_TILE_CREATION_COST = 100;
-        const DEED_TILE_UPKEEP_COST = 20;
-        const PERIMETER_TILE_CREATION_COST = 50;
-        const PERIMETER_TILE_UPKEEP_COST = 5;
+        const DEED_TILE_CREATION_COST = 1 * COPPER_COIN;
+        const DEED_TILE_UPKEEP_COST = 20 * IRON_COIN;
+        const PERIMETER_TILE_CREATION_COST = 50 * IRON_COIN;
+        const PERIMETER_TILE_UPKEEP_COST = 5 * IRON_COIN;
         const GUARD_FREEDOM_CREATION_COST = 2 * SILVER_COIN;
         const GUARD_FREEDOM_UPKEEP_COST = 1 * SILVER_COIN;
-        const GUARD_EPIC_CREATION_COST = 3 * SILVER_COIN;
-        const GUARD_EPIC_UPKEEP_COST = 3 * SILVER_COIN;
+        const GUARD_EPIC_BASE_COST = 1 * SILVER_COIN;
+        const GUARD_EPIC_INCREMENT_COST = 50 * COPPER_COIN;
         
         const TILES_PER_ANIMAL = 15;
         const TILES_PER_GUARD = 49;
@@ -162,14 +163,22 @@ var DeedCalculator;
         var perimeterAreaUpkeepCost = paidPerimeterArea * PERIMETER_TILE_UPKEEP_COST;
         var guardsCreationCost;
         if (isEpic) {
-            guardsCreationCost = guards * GUARD_EPIC_CREATION_COST;
+            guardsCreationCost = 0;
+            for (i = 0; i < guards; i++) {
+                guardsCreationCost += GUARD_EPIC_BASE_COST;
+                guardsCreationCost += GUARD_EPIC_INCREMENT_COST * i;
+            }
         }
         else {
             guardsCreationCost = guards * GUARD_FREEDOM_CREATION_COST;
         }
         var guardsUpkeepCost;
         if (isEpic) {
-            guardsUpkeepCost = guards * GUARD_EPIC_UPKEEP_COST;
+            guardsUpkeepCost = 0;
+            for (i = 0; i < guards; i++) {
+                guardsUpkeepCost += GUARD_EPIC_BASE_COST;
+                guardsUpkeepCost += GUARD_EPIC_INCREMENT_COST * i;
+            }
         }
         else {
             guardsUpkeepCost = guards * GUARD_FREEDOM_UPKEEP_COST;
