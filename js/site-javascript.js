@@ -319,6 +319,22 @@ var ArmorCalculator;
     
     ArmorCalculator.modifierTypes = ["base", "bite", "crush", "pierce", "slash", "burn", "cold", "acid", "infection", "internal", "poison"];
     
+    ArmorCalculator.metalTypeReduction = {
+        "Iron": 0,
+        "Steel": 0.025,
+        "Bronze": 0.01,
+        "Brass": 0.01,
+        "Adamantine": 0.05,
+        "Glimmersteel": 0.05,
+        "Seryll": 0.05,
+        "Copper": -0.01,
+        "Gold": -0.01,
+        "Lead": -0.025,
+        "Silver": -0.0075,
+        "Tin": -0.0175,
+        "Zinc": -0.02
+    };
+    
     ArmorCalculator.armorTypes = {
         "Cloth": {
             "baseReduction": 0.35,
