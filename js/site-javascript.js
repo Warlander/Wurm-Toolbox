@@ -317,7 +317,7 @@ var ArmorCalculator;
         "Fantastic": 1.09
     };
     
-    ArmorCalculator.modifierTypes = ["base", "bite", "crush", "pierce", "slash", "burn", "cold", "acid", "infection", "internal", "poison"];
+    ArmorCalculator.modifierTypes = ["base", "bite", "crush", "pierce", "slash", "burn", "cold", "acid", "infection", "internal", "poison", "water"];
     
     ArmorCalculator.metalTypeReduction = {
         "Iron": 0,
@@ -335,23 +335,13 @@ var ArmorCalculator;
         "Zinc": -0.02
     };
     
-    ArmorCalculator.armorTypes = {
+    ArmorCalculator.defaultTypeReduction = {
+        "Default": 0
+    };
+    
+    ArmorCalculator.armorData = {
         "Cloth": {
-            "baseReduction": 0.35,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 0.9,
-                "crush": 1.15,
-                "pierce": 1,
-                "slash": 0.8,
-                "burn": 0.9,
-                "cold": 1.25,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+            "materialTypes": ArmorCalculator.defaultTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.3,
@@ -363,25 +353,46 @@ var ArmorCalculator;
                 "acid": 0.6,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
+                "poison": 0,
+                "water": 0
+            },
+            "freedom": {
+                "baseReduction": 0.35,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 0.9,
+                    "crush": 1.15,
+                    "pierce": 1,
+                    "slash": 0.8,
+                    "burn": 0.9,
+                    "cold": 1.25,
+                    "acid": 1,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
+            },
+            "epic": {
+                "baseReduction": 0.4,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 0.8,
+                    "crush": 1.2,
+                    "pierce": 1,
+                    "slash": 0.8,
+                    "burn": 0.8,
+                    "cold": 1.2,
+                    "acid": 1,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         },
         "Leather": {
-            "baseReduction": 0.45,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 0.95,
-                "crush": 1,
-                "pierce": 0.9,
-                "slash": 1.1,
-                "burn": 1.15,
-                "cold": 1,
-                "acid": 0.9,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+            "materialTypes": ArmorCalculator.defaultTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.3,
@@ -393,25 +404,46 @@ var ArmorCalculator;
                 "acid": 0.2,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
+                "poison": 0,
+                "water": 0
+            },
+            "freedom": {
+                "baseReduction": 0.45,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 0.95,
+                    "crush": 1,
+                    "pierce": 0.9,
+                    "slash": 1.1,
+                    "burn": 1.15,
+                    "cold": 1,
+                    "acid": 0.9,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
+            },
+            "epic": {
+                "baseReduction": 0.6,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 0.9,
+                    "crush": 1,
+                    "pierce": 0.9,
+                    "slash": 1.1,
+                    "burn": 1.1,
+                    "cold": 1,
+                    "acid": 0.9,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         },
         "Studded leather": {
-            "baseReduction": 0.5,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.05,
-                "crush": 1,
-                "pierce": 1.1,
-                "slash": 0.9,
-                "burn": 1,
-                "cold": 0.9,
-                "acid": 1.05,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+            "materialTypes": ArmorCalculator.defaultTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.45,
@@ -423,25 +455,46 @@ var ArmorCalculator;
                 "acid": 0.2,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
+                "poison": 0,
+                "water": 0
+            },
+            "freedom": {
+                "baseReduction": 0.5,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1.05,
+                    "crush": 1,
+                    "pierce": 1.1,
+                    "slash": 0.9,
+                    "burn": 1,
+                    "cold": 0.9,
+                    "acid": 1.05,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
+            },
+            "epic": {
+                "baseReduction": 0.625,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1.05,
+                    "crush": 1,
+                    "pierce": 1.1,
+                    "slash": 0.9,
+                    "burn": 1,
+                    "cold": 1.1,
+                    "acid": 0.9,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         },
         "Chain": {
-            "baseReduction": 0.55,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.05,
-                "crush": 1.1,
-                "pierce": 0.9,
-                "slash": 1,
-                "burn": 1.05,
-                "cold": 0.9,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+            "materialTypes": ArmorCalculator.metalTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.6,
@@ -453,145 +506,46 @@ var ArmorCalculator;
                 "acid": 0.2,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
+                "poison": 0,
+                "water": 0
+            },
+            "freedom": {
+                "baseReduction": 0.55,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1.05,
+                    "crush": 1.1,
+                    "pierce": 0.9,
+                    "slash": 1,
+                    "burn": 1.05,
+                    "cold": 0.9,
+                    "acid": 1,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
+            },
+            "epic": {
+                "baseReduction": 0.625,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1.075,
+                    "crush": 1.075,
+                    "pierce": 0.925,
+                    "slash": 1,
+                    "burn": 1.075,
+                    "cold": 0.925,
+                    "acid": 1,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         },
-        "Steel chain": {
-            "baseReduction": 0.57,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.05,
-                "crush": 1.1,
-                "pierce": 0.9,
-                "slash": 1,
-                "burn": 1.05,
-                "cold": 0.9,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.6,
-                "crush": 0.25,
-                "pierce": 0.25,
-                "slash": 0.6,
-                "burn": 0.6,
-                "cold": 0.1,
-                "acid": 0.2,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Adamantine chain": {
-            "baseReduction": 0.55,
-            "materialReduction": 0.05,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.05,
-                "crush": 1.1,
-                "pierce": 0.9,
-                "slash": 1,
-                "burn": 1.05,
-                "cold": 0.9,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.6,
-                "crush": 0.25,
-                "pierce": 0.25,
-                "slash": 0.6,
-                "burn": 0.6,
-                "cold": 0.1,
-                "acid": 0.2,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Glimmersteel chain": {
-            "baseReduction": 0.55,
-            "materialReduction": 0.1,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.05,
-                "crush": 1.1,
-                "pierce": 0.9,
-                "slash": 1,
-                "burn": 1.05,
-                "cold": 0.9,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.6,
-                "crush": 0.25,
-                "pierce": 0.25,
-                "slash": 0.6,
-                "burn": 0.6,
-                "cold": 0.1,
-                "acid": 0.2,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Seryll chain": {
-            "baseReduction": 0.55,
-            "materialReduction": 0.1,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.05,
-                "crush": 1.1,
-                "pierce": 0.9,
-                "slash": 1,
-                "burn": 1.05,
-                "cold": 0.9,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.6,
-                "crush": 0.25,
-                "pierce": 0.25,
-                "slash": 0.6,
-                "burn": 0.6,
-                "cold": 0.1,
-                "acid": 0.2,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Iron plate": {
-            "baseReduction": 0.63,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.075,
-                "crush": 0.85,
-                "pierce": 1,
-                "slash": 1.05,
-                "burn": 0.95,
-                "cold": 1,
-                "acid": 1.075,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+        "Plate": {
+            "materialTypes": ArmorCalculator.metalTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.45,
@@ -603,145 +557,46 @@ var ArmorCalculator;
                 "acid": 0.3,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
-            }
-        },
-        "Steel plate": {
-            "baseReduction": 0.65,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.075,
-                "crush": 0.85,
-                "pierce": 1,
-                "slash": 1.05,
-                "burn": 0.95,
-                "cold": 1,
-                "acid": 1.075,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
+                "poison": 0,
+                "water": 0
             },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.45,
-                "crush": 0.25,
-                "pierce": 0.6,
-                "slash": 0.25,
-                "burn": 0.3,
-                "cold": 0.3,
-                "acid": 0.3,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Adamantine plate": {
-            "baseReduction": 0.65,
-            "materialReduction": 0.05,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.075,
-                "crush": 0.85,
-                "pierce": 1,
-                "slash": 1.05,
-                "burn": 0.95,
-                "cold": 1,
-                "acid": 1.075,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
+            "freedom": {
+                "baseReduction": 0.63,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1.07,
+                    "crush": 0.9,
+                    "pierce": 1,
+                    "slash": 1.05,
+                    "burn": 0.95,
+                    "cold": 1,
+                    "acid": 1.07,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.45,
-                "crush": 0.25,
-                "pierce": 0.6,
-                "slash": 0.25,
-                "burn": 0.3,
-                "cold": 0.3,
-                "acid": 0.3,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Glimmersteel plate": {
-            "baseReduction": 0.65,
-            "materialReduction": 0.1,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.075,
-                "crush": 0.85,
-                "pierce": 1,
-                "slash": 1.05,
-                "burn": 0.95,
-                "cold": 1,
-                "acid": 1.075,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.45,
-                "crush": 0.25,
-                "pierce": 0.6,
-                "slash": 0.25,
-                "burn": 0.3,
-                "cold": 0.3,
-                "acid": 0.3,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
-            }
-        },
-        "Seryll plate": {
-            "baseReduction": 0.65,
-            "materialReduction": 0.1,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1.075,
-                "crush": 0.85,
-                "pierce": 1,
-                "slash": 1.05,
-                "burn": 0.95,
-                "cold": 1,
-                "acid": 1.075,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
-            "blockChance": {
-                "base": 0,
-                "bite": 0.45,
-                "crush": 0.25,
-                "pierce": 0.6,
-                "slash": 0.25,
-                "burn": 0.3,
-                "cold": 0.3,
-                "acid": 0.3,
-                "infection": 0,
-                "internal": 0,
-                "poison": 0
+            "epic": {
+                "baseReduction": 0.65,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1.05,
+                    "crush": 0.95,
+                    "pierce": 1,
+                    "slash": 1.05,
+                    "burn": 0.95,
+                    "cold": 1,
+                    "acid": 1.05,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         },
         "Dragon leather": {
-            "baseReduction": 0.65,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1,
-                "crush": 1.1,
-                "pierce": 1,
-                "slash": 0.9,
-                "burn": 1,
-                "cold": 1.05,
-                "acid": 0.95,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+            "materialTypes": ArmorCalculator.defaultTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.5,
@@ -753,25 +608,46 @@ var ArmorCalculator;
                 "acid": 0.3,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
+                "poison": 0,
+                "water": 0
+            },
+            "freedom": {
+                "baseReduction": 0.65,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1,
+                    "crush": 1.1,
+                    "pierce": 1,
+                    "slash": 0.9,
+                    "burn": 1,
+                    "cold": 1.05,
+                    "acid": 0.95,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
+            },
+            "epic": {
+                "baseReduction": 0.65,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1,
+                    "crush": 1.05,
+                    "pierce": 1,
+                    "slash": 0.95,
+                    "burn": 1,
+                    "cold": 1.05,
+                    "acid": 0.95,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         },
         "Dragon scale": {
-            "baseReduction": 0.7,
-            "materialReduction": 0,
-            "reductionModifier": {
-                "base": 1,
-                "bite": 1,
-                "crush": 0.95,
-                "pierce": 1.1,
-                "slash": 1,
-                "burn": 1.1,
-                "cold": 0.95,
-                "acid": 1,
-                "infection": 1,
-                "internal": 1,
-                "poison": 1
-            },
+            "materialTypes": ArmorCalculator.defaultTypeReduction,
             "blockChance": {
                 "base": 0,
                 "bite": 0.4,
@@ -783,10 +659,47 @@ var ArmorCalculator;
                 "acid": 0.2,
                 "infection": 0,
                 "internal": 0,
-                "poison": 0
+                "poison": 0,
+                "water": 0
+            },
+            "freedom": {
+                "baseReduction": 0.7,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1,
+                    "crush": 0.95,
+                    "pierce": 1.1,
+                    "slash": 1,
+                    "burn": 1.1,
+                    "cold": 0.95,
+                    "acid": 1,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
+            },
+            "epic": {
+                "baseReduction": 0.7,
+                "reductionModifier": {
+                    "base": 1,
+                    "bite": 1,
+                    "crush": 0.95,
+                    "pierce": 1.05,
+                    "slash": 1,
+                    "burn": 1.05,
+                    "cold": 0.95,
+                    "acid": 1,
+                    "infection": 1,
+                    "internal": 1,
+                    "poison": 1,
+                    "water": 1
+                }
             }
         }
     };
+    
+    var lastReductionType = null;
     
     function calculateQualityModifier(normalizedQuality) {
         return Math.max(0.05, 1 - (1 - normalizedQuality) * (1 - normalizedQuality));
@@ -796,14 +709,27 @@ var ArmorCalculator;
         const baseReduction = 0.05;
         const baseBlock = 0.05;
         
+        var server = $("input:radio[name='armorCalcServerRadioGroup']:checked").val();
+        
         var includeBlockChance = $("#armorCalcBlockCheckbox").is(":checked");
         
-        var armorTypeString = $("#armorCalcSelect").val();
-        var armorType = ArmorCalculator.armorTypes[armorTypeString];
-        var armorBaseReduction = armorType["baseReduction"];
-        var armorMaterialReduction = armorType["materialReduction"];
-        var reductionModifiers = armorType["reductionModifier"];
-        var blockChances = armorType["blockChance"];
+        var armorDataString = $("#armorCalcSelect").val();
+        var armorData = ArmorCalculator.armorData[armorDataString];
+        var armorBaseReduction = armorData[server]["baseReduction"];
+        var reductionModifiers = armorData[server]["reductionModifier"];
+        var blockChances = armorData["blockChance"];
+        
+        var materialSelects = $(".armorCalcMaterialSelect");
+        if (lastReductionType !== armorData["materialTypes"]) {
+            lastReductionType = armorData["materialTypes"];
+            for(var i = materialSelects[0].options.length - 1 ; i >= 0 ; i--) {
+                materialSelects[0].remove(i);
+            }
+            $.each(lastReductionType, function(key, value) {
+                materialSelects.append($("<option/>").val(key).text(key));
+            });
+        }
+        var armorMaterialReduction = lastReductionType[materialSelects.val()];
         
         var rarityModifier = Number($("#armorCalcRarity").val());
         var quality = Number($("#armorCalcQuality").val());
@@ -848,11 +774,12 @@ $(document).ready(function() {
     });
     
     var armorSelects = $(".armorCalcArmorSelect");
-    $.each(ArmorCalculator.armorTypes, function(key, value) {
+    $.each(ArmorCalculator.armorData, function(key, value) {
         armorSelects.append($("<option/>").val(key).text(key));
     });
     
     $("#armor-calc-tab").on("input", ArmorCalculator.update);
+    $("#armor-calc-tab input[type='radio']").on("click", ArmorCalculator.update);
     
     ArmorCalculator.update();
 });

@@ -117,9 +117,22 @@
                 
                 
                 <div class="tab-container" id="armor-calc-tab">
+                    <div class="form-group col-xs-12">
+                        <label>Server: </label>   
+                        <label class="radio-inline">
+                            <input type="radio" name="armorCalcServerRadioGroup" id="armorCalcServerRadioFreedom" value="freedom" checked> Freedom
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="armorCalcServerRadioGroup" id="armorCalcServerRadioEpic" value="epic"> Epic
+                        </label>
+                    </div>
                     <div class="col-xs-12 form-group">
                         <label for="armorCalcSelect">Armor type</label>
                         <select class="form-control armorCalcArmorSelect" id="armorCalcSelect"></select>
+                    </div>
+                    <div class="col-xs-12 form-group">
+                        <label for="armorCalcMaterial">Armor material</label>
+                        <select class="form-control armorCalcMaterialSelect" id="armorCalcMaterial"></select>
                     </div>
                     <div class="col-xs-12 form-group">
                         <label for="armorCalcRarity">Armor rarity</label>
@@ -200,6 +213,12 @@
                                 </tr>
                                 <tr>
                                     <td>Poison</td>
+                                    <td>0%</td>
+                                    <td>0%</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td>Water</td>
                                     <td>0%</td>
                                     <td>0%</td>
                                     <td>0%</td>
