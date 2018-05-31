@@ -127,6 +127,12 @@ var DeedCalculator;
         var deedHeight = north + south + 1;
         var deedArea = deedWidth * deedHeight;
         
+        if (west < 5 || east < 5 || north < 5 || south < 5) {
+            errors.push("Deed cannot be smaller than 5 tiles in any direction from the token");
+        }
+        if (perimeter < 5) {
+            errors.push("Perimeter cannot be smaller than 5 free tiles");
+        }
         if (deedWidth > deedHeight * 4 || deedHeight > deedWidth * 4) {
             errors.push("Deed width cannot be more than 4 times bigger/smaller than height");
         }
